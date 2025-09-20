@@ -4,6 +4,7 @@
 
 import matplotlib.pyplot as plt
 
+#Årlig kjørelengde
 antall_km = 10000
 
 #Forsikring
