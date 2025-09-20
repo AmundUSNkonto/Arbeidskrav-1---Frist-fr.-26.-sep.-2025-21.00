@@ -2,9 +2,8 @@
 
 #For å finne den årlige kostnaden for elbil vs bensinbil samt differansen mellom dem.
 
-import matplotlib.pyplot as plt
-
 #Årlig kjørelengde
+
 antall_km = 10000
 
 #Forsikring
@@ -32,6 +31,10 @@ print(total_el)
 print(årlig_kostnadsdifferanse)
 
 #Ønsker å visualisere disse dataene i et stolpediagram
+#importerer matplotlib
+import matplotlib.pyplot as plt
+#Lager katergorier og verdier
+
 categories = ['Elbil', 'Bensinbil', 'Differanse']
 values = [total_el, total_bensin, årlig_kostnadsdifferanse]
 
