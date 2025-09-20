@@ -26,24 +26,24 @@ print(total_bensin)
 print(total_el)
 print(årlig_kostnadsdifferanse)
 
-# Ønsker å visualisere disse dataene i et stolpediagram
+#Ønsker å visualisere disse dataene i et stolpediagram
 categories = ['Elbil', 'Bensinbil', 'Differanse']
 values = [total_el, total_bensin, årlig_kostnadsdifferanse]
 
-# Lage stolpediagram
+#Lage stolpediagram
 bars = plt.bar(categories, values)
 
-# Add labels on bars
+#Add labels on bars
 for bar in bars:
     height = bar.get_height()
     plt.text(bar.get_x() + bar.get_width() / 2, height,
              f'{height:,.0f}kr',  # formats as integer with thousands separator
              ha='center', va='bottom')
 
-# titler
+#titler
 plt.xlabel('Type bil')
 plt.ylabel('Kostad (NOK)')
 plt.title('Årlig totalkostnad elbil vs bensinbil')
 
-# Show chart
+#Show chart
 plt.show()
