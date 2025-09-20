@@ -1,3 +1,7 @@
+# Arbeidskrav 1
+
+#For å finne den årlige kostnaden for elbil vs bensinbil samt differansen mellom dem.
+
 import matplotlib.pyplot as plt
 
 antall_km = 10000
