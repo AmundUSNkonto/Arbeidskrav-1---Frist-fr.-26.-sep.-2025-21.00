@@ -1,16 +1,49 @@
-# Arbeidskrav-1---Frist-fr.-26.-sep.-2025-21.00
-Anta at du skal kjøpe bil. Det står mellom elbil og bensinbil, og du ønsker å sammenlikne de årlige kostnadene ved elbil sammenliknet med bensinbil.
+import matplotlib.pyplot as plt
 
-Lag et Python-program som beregner og presenterer (i konsollen) de årlige totalkostnadene for elbil og for bensinbil samt årlig kostnadsdifferanse basert på informasjonen gitt nedenfor. Du kan her for enkelhets skyld se bort fra kostnader som renter på billån og verditap (du har da egentlig antatt at slike kostnader er like for elbil og bensinbil).
+antall_km = 10000
 
-Nedenfor er informasjon som programmet skal baseres på (som selvsagt kan diskuteres, men ikke ifm. denne oppgaven :-)
+#Forsikring
+forsikring_elbil = 5000
+forsikring_bensinbil = 7500
 
-Du kan selv velge antall kjørte km/år ut fra din typiske bilbruk. Ev. (hvis du ikke har bil) kan du anta 10.000 km.
+trafikkforsikringsavgift = 8.38*365
 
-Forsikring: Elbil: 5000 kr/år. Bensinbil: 7500 kr/år.
+#Drivstoff
+drivstoffforbruk_el = 0.2
+drivstoffforbruk_bensin = 1
+strømpris = 2
 
-Trafikkforsikringsavgift: 8,38 kr/dag for både elbil og bensinbil.
+#Bompenger
+bom_el = 0.1
+bom_bensin = 0.3
 
-Drivstoffbruk: Elbil: 0,2 kWh/km. Strømpris (antar kun hjemmelading): 2.00 kr/kWh. Bensinbil: 1,0 kr/km.
+#Totalkostnad for året
 
-Bomavgift: Elbil: 0,1 kr/km. Bensinbil: 0,3 kr/km.
+total_el = forsikring_elbil+trafikkforsikringsavgift+drivstoffforbruk_el*antall_km*strømpris+bom_el*antall_km
+total_bensin = forsikring_bensinbil+trafikkforsikringsavgift+drivstoffforbruk_bensin*antall_km+bom_bensin*antall_km
+årlig_kostnadsdifferanse = total_bensin-total_el
+print(total_bensin)
+print(total_el)
+print(årlig_kostnadsdifferanse)
+
+# Ønsker å visualisere disse dataene i et stolpediagram
+categories = ['Elbil', 'Bensinbil', 'Differanse']
+values = [total_el, total_bensin, årlig_kostnadsdifferanse]
+
+# Lage stolpediagram
+bars = plt.bar(categories, values)
+
+# Add labels on bars
+for bar in bars:
+    height = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width() / 2, height,
+             f'{height:,.0f}kr',  # formats as integer with thousands separator
+             ha='center', va='bottom')
+
+# titler
+plt.xlabel('Type bil')
+plt.ylabel('Kostad (NOK)')
+plt.title('Årlig totalkostnad elbil vs bensinbil')
+
+# Show chart
+plt.show()
